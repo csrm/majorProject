@@ -1,0 +1,38 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#	new file:   .gitattributes
+#	new file:   .gitignore
+#	new file:   README.md
+#	new file:   package.json
+#	new file:   public/favicon.ico
+#	new file:   public/index.html
+#	new file:   src/Contact.js
+#	new file:   src/Home.js
+#	new file:   src/Login.js
+#	new file:   src/Navigation.js
+#	new file:   src/SomeText.js
+#	new file:   src/css/bootstrap.min.css
+#	new file:   src/css/helper.css
+#	new file:   src/css/pe-icon-7-stroke.css
+#	new file:   src/css/style.css
+#	new file:   src/fonts/glyphicons-halflings-regular.eot
+#	new file:   src/fonts/glyphicons-halflings-regular.svg
+#	new file:   src/fonts/glyphicons-halflings-regular.ttf
+#	new file:   src/fonts/glyphicons-halflings-regular.woff
+#	new file:   src/fonts/pe-icon/Pe-icon-7-stroke.eot
+#	new file:   src/fonts/pe-icon/Pe-icon-7-stroke.svg
+#	new file:   src/fonts/pe-icon/Pe-icon-7-stroke.ttf
+#	new file:   src/fonts/pe-icon/Pe-icon-7-stroke.woff
+#	new file:   src/img/logo-dark.png
+#	new file:   src/img/pic1.jpg
+#	new file:   src/index.css
+#	new file:   src/index.js
+#	new file:   src/logo.svg
+#
+
