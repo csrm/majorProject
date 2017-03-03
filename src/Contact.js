@@ -7,12 +7,12 @@ class Contact extends Component {
 render() {
 
     return (
-  		<div className="container">
+  		<div className="home-section color-dark bg-white">
   			<div className="row marginbot-80">
   				<div className="col-md-8 col-md-offset-2">
   				    <div id="sendmessage">Your message has been sent. Thank you!</div>
                   <div id="errormessage"></div>
-                  <form action="" method="post" role="form" className="contactForm">
+                  <div className="contactForm">
                       <div className="form-group">
                         <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                         <div className="validation"></div>
@@ -30,10 +30,9 @@ render() {
                         <div className="validation"></div>
                       </div>
                       <div className="text-center"><button type="submit" className="btn btn-skin btn-lg btn-block">Send Message</button></div>
-                  </form>
+                  </div>
   				   </div>
   			  </div>
-            <script src="contactform/contactform.js"></script>
   		</div>
     );
   }

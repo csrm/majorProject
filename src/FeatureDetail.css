@@ -1,0 +1,31 @@
+.featured-left {
+  float: left;
+  width: 50%;
+  padding: 20px;
+  height: 600px;
+}
+
+.featured-right {
+  float: right;
+  width: 50%;
+  height: 600px;
+  padding: 5%;
+  overflow: hidden;
+}
+
+
+.featured
+{
+    margin: 50px auto;
+    position: relative;
+    background-color: #f2fff2;
+    width:1000px;
+    overflow: auto;
+}
+
+.featured img{
+  margin: auto;
+  position: relative;
+  width: 250px;
+  height: 200px;
+}

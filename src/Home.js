@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
-//import Navigation from './Navigation';
-import Login from './Login';
+import Navigation from './Navigation';
+import Header from './Header';
 import SomeText from './SomeText';
 import Contact from './Contact';
-
+import Cf from './Cf';
+//import {Link} from 'react-router';
+//import ReactDOM from 'react-dom';
+import Login from './Login';
+import SignUp from './SignUp';
 class Home extends Component {
+
+   constructor() {
+    super();
+    this.lClick = this.lClick.bind(this);
+    this.sClick = this.sClick.bind(this);
+    this.state={visible:true,childVisible:false};
+  }
+  lClick() {
+    this.setState({visible:false});
+    this.setState({childVisible:true});
+  }
+sClick(){
+    this.setState({visible:false});
+    this.setState({childVisible:false});
+  }
 
 render() {
 
@@ -16,10 +35,26 @@ var contact="You can leave a message here.";
 
     return (
      <div className="home">
-        <Login />
-        <SomeText title="About" text={about}/>
-        <SomeText title="Contact Us" text={contact} />
-        <Contact />
+     {this.state.visible
+       ? <div>
+       <img src={require('./img/pic1.jpg')}  height="550px" width="100%" alt="" className="HomeImage" />
+       <div className="bgimg">
+            <p className="loginp">SURVEKSHAN</p>
+             <br />
+            <p className="login-content">A map survey tool</p>
+            <div className="form">
+          <center>  <button onClick={this.lClick} className="btn btn-skin btn-lg btn-block">login</button><br />
+            <button onClick={this.sClick} className="btn btn-skin btn-lg btn-block">Sign Up</button></center>
+       </div>
+       </div>
+         <SomeText title="About" text={about}/>
+         <div className="bg-white">
+         <Cf />
+         </div>
+         <SomeText title="Contact Us" text={contact} />
+         <Contact /></div>
+       :<div> {this.state.childVisible?<Login />:<SignUp />    } </div>
+     }
      </div>
     );
   }

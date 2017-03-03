@@ -1,0 +1,82 @@
+bgPg{
+ background-color: white;
+}
+
+.tbContainer{
+  /*padding: 10px 10px 10px 10px;*/
+  margin: 5% 10%;
+  background-color: white;
+}
+
+.tbContainer table{
+ background-color:#F9F9F9;
+ /*padding: 10px 10px 10px 10px;*/
+ margin: 5% auto;
+
+}
+
+/*img{
+  position:absolute;
+  width:300px;
+  height:200px;
+  left:0;
+}*/
+
+.survey{
+ position:relative;
+ margin-top:auto;
+ width:300px;
+ height:200px;
+
+}
+
+.surveyTitle{
+  position:absolute;
+  width:300px;
+  left:0;
+  top:100px;
+  font-weight:700;
+  font-size: 30px;
+  text-align:center;
+  text-transform: uppercase;
+  color:white;
+  z-index:1;
+  transition:top .5s ease;
+
+}
+
+.survey:hover .surveyTitle{
+  top:50px;
+}
+
+.overlay{
+ position:relative;
+ top:7%;
+ width:97%;
+ height:97%;
+ left:9px;
+ color:#FFF;
+ background: rgba(0,0,0,0);
+ transition:background 0.7s ease;
+}
+
+.survey:hover .overlay{
+  display:block;
+  background:rgba(0,0,0,.3);
+}
+
+.featureButton{
+  position:absolute;
+  width:300px;
+  left:0;
+  top:100px;
+  text-align:center;
+  opacity:0;
+  z-index:1;
+  transition:opacity .35s ease;
+  color:white;
+}
+
+.survey:hover .featureButton{
+  opacity:1;
+}

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-//import './App.css';
-//import Surveyor1 from './Surveyor1';
-import SurveyorList from './SurveyorList';
-import Admin1 from './Admin1';
+import Login from './Login';
 import './Login.css';
-class Login extends Component {
+class SignUp extends Component {
   constructor(props){
   super(props);
-  this.state={data:'', passwd:'',message:'',visible:true,child:false,uid:'',uname:''};
+  this.state={data:'', passwd:'',message:'',rpasswd:'',visible:true};
   this.updateState=this.updateState.bind(this);
   this.updatePasswd=this.updatePasswd.bind(this);
-  //  this.validate=this.validate.bind(this);
+  this.confPasswd=this.confPasswd.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
 }
 
@@ -22,13 +19,9 @@ updatePasswd(e){
   this.setState({passwd:e.target.value});
 }
 
-/*validate(username,password){
-  if((username=='abc')&&(password=='123'))
-     this.setState({res:'VALID, Login Successful'});
-  else {
-     this.setState({res:'Invalid Username and Password'});
-  }
-}*/
+confPasswd(e){
+  this.setState({rpasswd:e.target.value});
+}
 
 handleSubmit(event){
   event.preventDefault(); //
@@ -45,7 +38,6 @@ var formData = {
   // description: React.findDOMNode(this.refs.description).value,
   // type: React.findDOMNode(this.refs.type).value,
   // state: React.findDOMNode(this.refs.state).value,
-
 };
 /*fetch('http://localhost:9000/hello', {
        method: 'POST',
@@ -67,37 +59,33 @@ var formData = {
        .catch((error) => {
         console.error(error);
     });*/
+  if(this.state.passwd == this.state.rpasswd)
+  {
     var xmlhttp = new XMLHttpRequest();
     var _this = this;
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4) {
       //  var response = xmlhttp.responseText;
 
-        if (xmlhttp.status === 200) {
-
+        if (xmlhttp.status === 201) {
           _this.setState({visible:false});
-          if(JSON.parse(xmlhttp.responseText).role==='surveyor')
-            _this.setState({ child:true });
-          else if(JSON.parse(xmlhttp.responseText).role==='admin')
-            _this.setState({ child:false });
-            var x=JSON.parse(xmlhttp.responseText).userId;
-            var y=JSON.parse(xmlhttp.responseText).userName;
-            _this.setState({uid:x, uname:y});
-            console.log(_this.state.uid);
         }
-        else if(xmlhttp.status===401) {
-          _this.setState({ message: 'Invalid user' });
+        else {
+          _this.setState({ message: 'Registration failed' });
         }
         console.log(_this.state.message);
       }
     };
-    xmlhttp.open('POST', 'http://localhost:9000/users', true);
+    xmlhttp.open('POST', 'http://localhost:9000/user', true);
     //xmlhttp.withCredentials = true;
     xmlhttp.setRequestHeader('Content-type', 'application/json');
     //xmlhttp.setRequestHeader('Accept', 'application/json');
     xmlhttp.setRequestHeader('Access-Control-Allow-Origin', 'no-cors');
     xmlhttp.send(JSON.stringify(formData));
-
+  }
+  else {
+    this.setState({message: 'Password does not match'});
+  }
 }
 
 render()
@@ -106,28 +94,34 @@ render()
     <div>
     {this.state.visible
     ?<div className="form-container">
-	<section id="content">
-		<form onSubmit={this.handleSubmit}>
-			<h1>Login Form</h1>
-      <div>
-        <img src={require('./img/user_login.ico')} alt="" width="200px" height="200px" />
-			</div>
-      <div>
-				<input type="text" placeholder="Username" required="" id="username"  value={this.state.data}
-         onChange={this.updateState} />
-			</div>
-			<div>
-				<input type="password" placeholder="Password" required="" id="password"   value={this.state.passwd}
-          onChange={this.updatePasswd} />
-			</div>
-			<div>
-				<input type="submit" value="Log in" />
-          <p>{this.state.message}</p>
-			</div>
-		</form>
-	</section>
-</div>
-    : <div>{ this.state.child? <SurveyorList uid={this.state.uid} uname={this.state.uname} /> : <Admin1 uid={this.state.uid} uname={this.state.uname}  /> }</div>
+	   <section id="content">
+    <form action="" onSubmit={this.handleSubmit}>
+    <h1>  Register</h1>
+    <div>
+    <input type="text" placeholder="Username" id="username"
+           value={this.state.data}
+           onChange={this.updateState}/>
+    </div>
+    <div>
+    <input type="password"  placeholder="Password" id="password"
+            value={this.state.passwd}
+            onChange={this.updatePasswd}  />
+    </div>
+    <div>
+    <input type="password"  placeholder="Re-Enter Password" id="password"
+            value={this.state.rpasswd}
+            onChange={this.confPasswd}  />
+    </div>
+
+    <div>
+    <input type="submit" value="Sign Up" />
+    <p>{this.state.message}</p>
+    </div>
+
+    </form>
+    </section>
+    </div>
+    : <Login />
    }
    </div>
    );
@@ -136,4 +130,4 @@ render()
 
 }
 
-export default Login;
+export default SignUp;
